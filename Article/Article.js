@@ -112,3 +112,56 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
 
 */
+
+// creating the compenent with all the parts using creaate element
+articleComponent = article => {
+  const div = document.createElement('div')
+  div.classList.add('article')
+  
+
+  const Header = document.createElement('h2')
+  Header.textContent = article.title
+
+  const date = document.createElement('p')
+  date.classList.add('date')
+  date.textContent = article.date
+
+  const p1 = document.createElement('p')
+  p1.textContent = article.firstParagraph
+
+  const p2 = document.createElement('p')
+  p2.textContent = article.secondParagraph
+
+  const p3 = document.createElement('p')
+  p3.textContent = article.thirdParagraph
+
+  // span that will have an event listener that will be cliced to expand the readable box.
+  const expand = document.createElement('span')
+  expand.classList.add('expandButton')
+  expand.textContent = 'read more'
+  expand.addEventListener('click', () => {
+    div.classList.toggle('article-open')
+  })
+
+  // appending the child elements to the parent div element
+  div.appendChild(Header);
+  div.appendChild(date);
+  div.appendChild(p1);
+  div.appendChild(p2);
+  div.appendChild(p3);
+  div.appendChild(expand);
+
+  return div;
+  // const elements = [h2, articleDate, p1, p2, p3, expand];
+	// elements.map(element => div.append(element));
+
+	// return div;
+};
+
+const newArticle = data.map((data) => {
+  return;
+})
+data.forEach(element => {
+  let articles = articleComponent(element);
+  document.body.appendChild(articles);
+});
